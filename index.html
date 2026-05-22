@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meus Treinos - Dashboard</title>
+    <title>Tracker de Treino Integrado</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -11,253 +11,267 @@
         body { background-color: #0b0d19; color: #f3f4f6; }
         .bg-card { background-color: #111424; }
         .border-neon { border-color: #2a2f4c; }
-        .text-neon-pink { color: #ec4899; }
-        .tab-active { border-bottom: 3px solid #ec4899; color: #ec4899; font-weight: bold; }
+        .btn-purple { background: linear-gradient(90deg, #a855f7 0%, #ec4899 100%); }
+        .selected-group { border-color: #ec4899 !important; background-color: rgba(236, 72, 153, 0.1) !important; }
+        .selected-feeling { border-color: #a855f7 !important; background-color: rgba(168, 85, 247, 0.1) !important; }
+        input, textarea, select { background-color: #161a30 !important; border-color: #2a2f4c !important; color: #ffffff !important; }
     </style>
 </head>
-<body class="p-4 md:p-6 max-w-4xl mx-auto font-sans">
+<body class="p-4 md:p-6 max-w-4xl mx-auto font-sans space-y-8">
 
-    <div class="flex justify-between items-center mb-6">
-        <div class="flex items-center gap-3">
+    <div>
+        <div class="flex items-center gap-3 mb-6">
             <div class="p-3 bg-purple-900/40 rounded-xl text-purple-400 text-2xl">
-                <i class="fa-solid fa-dumbbell"></i>
+                <i class="fa-solid fa-chart-line"></i>
             </div>
             <div>
                 <h1 class="text-2xl font-bold tracking-wide">Meus Treinos</h1>
-                <p class="text-gray-400 text-sm">Acompanhe sua evolução</p>
-            </div>
-        </div>
-        <a href="novo-treino.html" class="border border-pink-500/40 text-pink-400 px-4 py-2 rounded-xl text-sm hover:bg-pink-500/10 transition flex items-center gap-2 font-semibold">
-            <i class="fa-solid fa-plus"></i> Novo treino
-        </a>
-    </div>
-
-    <div class="flex justify-between border-b border-neon text-sm text-gray-400 mb-6 pb-1">
-        <button class="tab-active px-2 pb-3">Semana atual</button>
-        <button class="px-2 pb-3 hover:text-white transition">Semana passada</button>
-        <button class="px-2 pb-3 hover:text-white transition">Maio/2026</button>
-        <button class="px-2 pb-3 hover:text-white transition">Estatísticas</button>
-    </div>
-
-    <div class="bg-card p-3 rounded-xl border border-neon flex justify-between items-center text-sm mb-6">
-        <button class="text-gray-400 hover:text-white px-2"><i class="fa-solid fa-chevron-left"></i></button>
-        <div class="flex items-center gap-2 text-gray-200">
-            <i class="fa-regular fa-calendar text-purple-400"></i>
-            <span class="font-medium">18/05 a 24/05/2026 • Semana 21</span>
-        </div>
-        <button class="text-gray-400 hover:text-white px-2"><i class="fa-solid fa-chevron-right"></i></button>
-    </div>
-
-    <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-6">
-        <div class="bg-card p-4 rounded-xl border border-neon flex flex-col justify-between">
-            <div class="flex items-center gap-2 text-purple-400 text-xs font-semibold uppercase tracking-wider mb-2">
-                <i class="fa-regular fa-calendar-check"></i> Treinos
-            </div>
-            <div class="text-2xl font-bold">4</div>
-            <div class="text-gray-500 text-xs mt-1">esta semana</div>
-        </div>
-        <div class="bg-card p-4 rounded-xl border border-neon flex flex-col justify-between">
-            <div class="flex items-center gap-2 text-pink-400 text-xs font-semibold uppercase tracking-wider mb-2">
-                <i class="fa-regular fa-clock"></i> Tempo total
-            </div>
-            <div class="text-xl font-bold">3h 45min</div>
-            <div class="text-gray-500 text-xs mt-1">esta semana</div>
-        </div>
-        <div class="bg-card p-4 rounded-xl border border-neon flex flex-col justify-between">
-            <div class="flex items-center gap-2 text-orange-400 text-xs font-semibold uppercase tracking-wider mb-2">
-                <i class="fa-solid fa-fire-flame-curved"></i> Volume total
-            </div>
-            <div class="text-xl font-bold">6.320 kg</div>
-            <div class="text-gray-500 text-xs mt-1">esta semana</div>
-        </div>
-        <div class="bg-card p-4 rounded-xl border border-neon flex flex-col justify-between">
-            <div class="flex items-center gap-2 text-green-400 text-xs font-semibold uppercase tracking-wider mb-2">
-                <i class="fa-solid fa-heart-pulse"></i> Cardio total
-            </div>
-            <div class="text-xl font-bold">110 min</div>
-            <div class="text-gray-500 text-xs mt-1">esta semana</div>
-        </div>
-        <div class="bg-card p-4 rounded-xl border border-neon col-span-2 md:col-span-1 flex flex-col justify-between">
-            <div class="flex items-center gap-2 text-yellow-500 text-xs font-semibold uppercase tracking-wider mb-2">
-                <i class="fa-regular fa-star"></i> Avaliação
-            </div>
-            <div class="text-2xl font-bold">4,3<span class="text-sm text-gray-500">/5</span></div>
-            <div class="text-gray-500 text-xs mt-1">esta semana</div>
-        </div>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-        <div class="bg-card p-5 rounded-xl border border-neon md:col-span-2">
-            <div class="flex justify-between items-center mb-4">
-                <h3 class="text-sm font-semibold text-gray-300">Volume levantado (kg)</h3>
-                <select class="bg-[#161a30] text-xs border border-neon rounded px-2 py-1 text-gray-300 focus:outline-none">
-                    <option>Por treino</option>
-                </select>
-            </div>
-            <div class="h-48 w-full">
-                <canvas id="volumeChart"></canvas>
+                <p class="text-gray-400 text-sm">Acompanhe seu rendimento e evolução</p>
             </div>
         </div>
 
-        <div class="bg-card p-5 rounded-xl border border-neon flex flex-col justify-between">
-            <h3 class="text-sm font-semibold text-gray-300 mb-3">Insights da semana</h3>
-            
-            <div class="space-y-4 text-xs">
-                <div class="flex items-start gap-3">
-                    <div class="p-2 bg-purple-950/40 border border-purple-500/20 text-purple-400 rounded-lg"><i class="fa-solid fa-chart-line"></i></div>
-                    <div>
-                        <p class="text-gray-400">Maior volume</p>
-                        <p class="font-semibold text-purple-300">Glúteos e Posterior</p>
-                        <p class="text-gray-500">1.780 kg</p>
-                    </div>
-                </div>
-                <div class="flex items-start gap-3">
-                    <div class="p-2 bg-orange-950/40 border border-orange-500/20 text-orange-400 rounded-lg"><i class="fa-solid fa-fire"></i></div>
-                    <div>
-                        <p class="text-gray-400">Melhor avaliação</p>
-                        <p class="font-semibold text-orange-300">Ombros e Tríceps</p>
-                        <p class="text-gray-500">Ótimo</p>
-                    </div>
-                </div>
-                <div class="flex items-start gap-3">
-                    <div class="p-2 bg-green-950/40 border border-green-500/20 text-green-400 rounded-lg"><i class="fa-solid fa-arrow-trend-up"></i></div>
-                    <div>
-                        <p class="text-gray-400">Evolução de carga</p>
-                        <p class="font-semibold text-green-400">+12% <span class="text-gray-500 font-normal">vs sem. passada</span></p>
-                    </div>
-                </div>
-            </div>
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-6">
+            <div class="bg-card p-4 rounded-xl border border-neon"><div class="text-purple-400 text-[10px] font-bold uppercase mb-1">Treinos Realizados</div><div class="text-2xl font-bold">4</div><div class="text-gray-500 text-[10px]">esta semana</div></div>
+            <div class="bg-card p-4 rounded-xl border border-neon"><div class="text-pink-400 text-[10px] font-bold uppercase mb-1">Tempo Total</div><div class="text-xl font-bold">3h 45min</div><div class="text-gray-500 text-[10px]">esta semana</div></div>
+            <div class="bg-card p-4 rounded-xl border border-neon"><div class="text-orange-400 text-[10px] font-bold uppercase mb-1">Volume Total</div><div class="text-xl font-bold">6.320 kg</div><div class="text-gray-500 text-[10px]">esta semana</div></div>
+            <div class="bg-card p-4 rounded-xl border border-neon"><div class="text-green-400 text-[10px] font-bold uppercase mb-1">Cardio Total</div><div class="text-xl font-bold">110 min</div><div class="text-gray-500 text-[10px]">esta semana</div></div>
+            <div class="bg-card p-4 rounded-xl border border-neon col-span-2 md:col-span-1"><div class="text-yellow-500 text-[10px] font-bold uppercase mb-1">Avaliação Média</div><div class="text-2xl font-bold">4,3<span class="text-sm text-gray-500">/5</span></div><div class="text-gray-500 text-[10px]">esta semana</div></div>
+        </div>
 
-            <div class="border-t border-neon mt-4 pt-3 text-center">
-                <button class="text-purple-400 text-xs font-semibold hover:underline">Ver estatísticas completas <i class="fa-solid fa-chevron-right text-[10px]"></i></button>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-card p-5 rounded-xl border border-neon md:col-span-2">
+                <h3 class="text-sm font-semibold text-gray-300 mb-4">Volume levantado (kg) por treino</h3>
+                <div class="h-48 w-full"><canvas id="volumeChart"></canvas></div>
+            </div>
+            <div class="bg-card p-5 rounded-xl border border-neon flex flex-col justify-between text-xs space-y-3">
+                <h3 class="text-sm font-semibold text-gray-300">Insights da semana</h3>
+                <div class="flex items-center gap-2"><span class="text-purple-400">🟣</span> <span><strong>Maior volume:</strong> Glúteos e Posterior (1.780 kg)</span></div>
+                <div class="flex items-center gap-2"><span class="text-orange-400">🔥</span> <span><strong>Melhor avaliação:</strong> Ombros e Tríceps (Ótimo)</span></div>
+                <div class="flex items-center gap-2"><span class="text-green-400">📈</span> <span><strong>Evolução de carga:</strong> +12% vs sem. passada</span></div>
             </div>
         </div>
     </div>
 
-    <div class="bg-card p-5 rounded-xl border border-neon mb-6">
-        <div class="flex justify-between items-center mb-4">
-            <h3 class="text-sm font-semibold text-gray-300">Treinos da semana</h3>
-            <div class="flex gap-2 text-gray-400 text-sm">
-                <button class="text-pink-500"><i class="fa-solid fa-border-all"></i></button>
-                <button class="hover:text-white"><i class="fa-solid fa-list"></i></button>
-            </div>
-        </div>
+    <hr class="border-neon">
 
-        <div class="space-y-3" id="workouts-list">
-            <div class="flex items-center justify-between border border-neon p-3 rounded-xl hover:bg-gray-800/20 transition cursor-pointer text-sm">
-                <div class="flex items-center gap-3">
-                    <div class="text-center bg-pink-950/30 border border-pink-500/20 text-pink-400 rounded-xl px-2.5 py-1.5 w-14">
-                        <span class="block text-[10px] uppercase font-bold leading-none">Qui</span>
-                        <span class="block text-lg font-black leading-none mt-0.5">21</span>
-                        <span class="block text-[9px] uppercase tracking-wide opacity-70 leading-none mt-0.5">Mai</span>
-                    </div>
-                    <div>
-                        <div class="flex items-center gap-2">
-                            <span>🍑 Glúteos e Posterior</span>
-                            <span class="bg-pink-500/10 text-pink-400 border border-pink-500/20 text-[9px] font-bold uppercase px-1.5 py-0.5 rounded">Foco</span>
-                        </div>
-                        <div class="flex gap-3 text-xs text-gray-500 mt-1">
-                            <span><i class="fa-regular fa-clock"></i> 60 min</span>
-                            <span><i class="fa-regular fa-calendar"></i> 17:45</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="hidden sm:block text-center">
-                    <span class="text-gray-500 text-xs block">Volume</span>
-                    <span class="font-semibold text-gray-200">1.780 kg</span>
-                </div>
-                <div class="hidden sm:block text-center">
-                    <span class="text-gray-500 text-xs block">Avaliação</span>
-                    <span class="font-semibold text-orange-400">💪 Bom</span>
-                </div>
-                <div class="flex items-center gap-4">
-                    <div class="text-right">
-                        <span class="text-pink-400 font-bold block text-sm">85%</span>
-                        <span class="text-[10px] text-gray-500">Rendimento</span>
-                    </div>
-                    <i class="fa-solid fa-chevron-right text-gray-600 text-xs"></i>
-                </div>
-            </div>
-
-            <div class="flex items-center justify-between border border-neon p-3 rounded-xl hover:bg-gray-800/20 transition cursor-pointer text-sm">
-                <div class="flex items-center gap-3">
-                    <div class="text-center bg-purple-950/30 border border-purple-500/20 text-purple-400 rounded-xl px-2.5 py-1.5 w-14">
-                        <span class="block text-[10px] uppercase font-bold leading-none">Ter</span>
-                        <span class="block text-lg font-black leading-none mt-0.5">19</span>
-                        <span class="block text-[9px] uppercase tracking-wide opacity-70 leading-none mt-0.5">Mai</span>
-                    </div>
-                    <div>
-                        <div class="flex items-center gap-2">
-                            <span>↔️ Costas e Bíceps</span>
-                            <span class="bg-purple-500/10 text-purple-400 border border-purple-500/20 text-[9px] font-bold uppercase px-1.5 py-0.5 rounded">Força</span>
-                        </div>
-                        <div class="flex gap-3 text-xs text-gray-500 mt-1">
-                            <span><i class="fa-regular fa-clock"></i> 55 min</span>
-                            <span><i class="fa-regular fa-calendar"></i> 18:10</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="hidden sm:block text-center">
-                    <span class="text-gray-500 text-xs block">Volume</span>
-                    <span class="font-semibold text-gray-200">1.520 kg</span>
-                </div>
-                <div class="hidden sm:block text-center">
-                    <span class="text-gray-500 text-xs block">Avaliação</span>
-                    <span class="font-semibold text-red-400">🔥 Ótimo</span>
-                </div>
-                <div class="flex items-center gap-4">
-                    <div class="text-right">
-                        <span class="text-purple-400 font-bold block text-sm">92%</span>
-                        <span class="text-[10px] text-gray-500">Rendimento</span>
-                    </div>
-                    <i class="fa-solid fa-chevron-right text-gray-600 text-xs"></i>
-                </div>
-            </div>
-        </div>
-
-        <a href="novo-treino.html" class="w-full mt-4 p-3 border border-dashed border-purple-500/30 rounded-xl text-purple-400 text-sm hover:bg-purple-500/5 transition flex items-center justify-center gap-2 font-medium">
-            <i class="fa-solid fa-plus"></i> Adicionar treino
-        </a>
-    </div>
-
-    <div class="bg-card p-5 rounded-xl border border-neon">
-        <h3 class="text-sm font-semibold text-gray-300 mb-4">Resumo da semana</h3>
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs">
+    <div>
+        <div class="flex justify-between items-center mb-6">
             <div class="flex items-center gap-3">
-                <div class="text-xl text-purple-400"><i class="fa-solid fa-layer-group"></i></div>
+                <div class="p-3 bg-pink-900/40 rounded-xl text-pink-400 text-2xl">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                </div>
                 <div>
-                    <span class="text-gray-500 block">Grupos trabalhados</span>
-                    <span class="font-bold text-sm">8/11</span>
+                    <h2 class="text-xl font-bold tracking-wide">Registrar Novo Treino</h2>
+                    <p class="text-gray-400 text-sm">Insira os dados do seu treino atual abaixo</p>
                 </div>
             </div>
-            <div class="flex items-center gap-3">
-                <div class="text-xl text-yellow-500"><i class="fa-regular fa-star"></i></div>
-                <div>
-                    <span class="text-gray-500 block">Treinos ótimos</span>
-                    <span class="font-bold text-sm">2</span>
-                </div>
-            </div>
-            <div class="flex items-center gap-3">
-                <div class="text-xl text-green-400"><i class="fa-regular fa-circle-check"></i></div>
-                <div>
-                    <span class="text-gray-500 block">Meta semanal</span>
-                    <span class="font-bold text-sm">4/4</span>
-                </div>
-            </div>
-            <div class="flex items-center gap-3">
-                <div class="text-xl text-blue-400"><i class="fa-solid fa-droplet"></i></div>
-                <div>
-                    <span class="text-gray-500 block">Calorias (estimado)</span>
-                    <span class="font-bold text-sm">8.450 kcal</span>
-                </div>
-            </div>
+            <button onclick="clearAll()" class="border border-red-500/30 text-red-400 px-3 py-1.5 rounded-lg text-sm hover:bg-red-500/10 transition"><i class="fa-regular fa-trash-can"></i> Limpar tudo</button>
         </div>
+
+        <div class="space-y-6">
+            <div class="bg-card p-5 rounded-xl border border-neon">
+                <label class="block text-purple-400 text-sm font-semibold mb-2">1. Data do treino</label>
+                <input type="date" id="training-date" class="w-full p-3 rounded-lg border focus:outline-none focus:border-purple-500">
+            </div>
+
+            <div class="bg-card p-5 rounded-xl border border-neon">
+                <label class="block text-purple-400 text-sm font-semibold mb-1">2. Grupo muscular</label>
+                <p class="text-gray-400 text-xs mb-4">Selecione um ou mais grupos trabalhados</p>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3" id="muscle-groups"></div>
+                <div id="selected-badge-container" class="mt-4 p-3 bg-[#161a30] rounded-lg border border-purple-500/20 text-sm hidden justify-between items-center">
+                    <span class="text-purple-300" id="selected-badge-text"></span>
+                    <button onclick="clearSelectedMuscles()" class="text-gray-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-card p-5 rounded-xl border border-neon">
+                    <label class="block text-purple-400 text-sm font-semibold mb-3">3. Duração (min)</label>
+                    <div class="flex items-center bg-[#161a30] border border-neon rounded-lg px-3">
+                        <input type="number" id="duration" value="60" class="w-full bg-transparent p-3 focus:outline-none text-xl font-bold">
+                        <span class="text-gray-400 text-sm">min</span>
+                    </div>
+                </div>
+                <div class="bg-card p-5 rounded-xl border border-neon">
+                    <label class="block text-purple-400 text-sm font-semibold mb-3">4. Como foi o treino?</label>
+                    <div class="grid grid-cols-4 gap-2 text-center text-xs">
+                        <button onclick="setFeeling('Fraco')" id="feel-Fraco" class="border border-neon p-2.5 rounded-lg hover:bg-gray-800">😢<br><span class="text-gray-400 mt-1 block">Fraco</span></button>
+                        <button onclick="setFeeling('Ok')" id="feel-Ok" class="border border-neon p-2.5 rounded-lg hover:bg-gray-800">😐<br><span class="text-gray-400 mt-1 block">Ok</span></button>
+                        <button onclick="setFeeling('Bom')" id="feel-Bom" class="border border-neon p-2.5 rounded-lg hover:bg-gray-800">💪<br><span class="text-gray-400 mt-1 block">Bom</span></button>
+                        <button onclick="setFeeling('Ótimo')" id="feel-Ótimo" class="border border-neon p-2.5 rounded-lg hover:bg-gray-800">🔥<br><span class="text-gray-400 mt-1 block">Ótimo</span></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-card p-5 rounded-xl border border-neon overflow-x-auto">
+                <label class="block text-purple-400 text-sm font-semibold mb-4">5. Exercícios</label>
+                <table class="w-full text-left min-w-[600px]">
+                    <thead>
+                        <tr class="text-gray-400 text-xs uppercase border-b border-neon pb-2">
+                            <th class="pb-3 w-1/3">Exercício</th>
+                            <th class="pb-3 text-center">Séries</th>
+                            <th class="pb-3 text-center">Repetições</th>
+                            <th class="pb-3 text-center">Peso (kg)</th>
+                            <th class="pb-3 text-center w-12">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="exercise-rows"></tbody>
+                </table>
+                <button onclick="addExerciseRow()" class="w-full mt-4 p-3 border border-dashed border-purple-500/40 rounded-xl text-purple-400 hover:bg-purple-500/5 transition flex items-center justify-center gap-2 font-medium">
+                    <i class="fa-solid fa-circle-plus"></i> Adicionar exercício
+                </button>
+            </div>
+
+            <div class="bg-card p-5 rounded-xl border border-neon">
+                <label class="block text-purple-400 text-sm font-semibold mb-2">📝 6. Observações</label>
+                <textarea id="observations" rows="3" placeholder="Anotações, PR novo..." class="w-full p-3 rounded-lg border text-sm focus:outline-none resize-none"></textarea>
+            </div>
+
+            <button onclick="saveWorkout()" class="w-full btn-purple py-4 rounded-xl font-bold text-lg shadow-lg shadow-pink-500/20 hover:opacity-95 transition flex items-center justify-center gap-2">
+                <i class="fa-regular fa-floppy-disk"></i> Salvar treino
+            </button>
+        </div>
+    </div>
+
+    <div id="history-box" class="bg-card p-5 rounded-xl border border-neon hidden">
+        <h3 class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-3">📋 Código das Informações Salvas</h3>
+        <pre id="history-data" class="text-xs text-purple-300 bg-black/30 p-4 rounded overflow-x-auto font-mono"></pre>
     </div>
 
     <script>
+        const muscles = [
+            { id: 'peito', label: 'Peito', icon: '🏋️‍♂️' }, { id: 'costas', label: 'Costas', icon: '↔️' },
+            { id: 'quadriceps', label: 'Quadríceps', icon: '🦵' }, { id: 'posterior', label: 'Posterior', icon: '🧍' },
+            { id: 'gluteos', label: 'Glúteos', icon: '🍑' }, { id: 'ombros', label: 'Ombros', icon: '🎯' },
+            { id: 'biceps', label: 'Bíceps', icon: '💪' }, { id: 'triceps', label: 'Tríceps', icon: '💪' },
+            { id: 'abdomen', label: 'Abdômen', icon: '⚡' }, { id: 'antebraco', label: 'Antebraço', icon: '🦾' },
+            { id: 'panturrilha', label: 'Panturrilha', icon: '🦶' }, { id: 'cardio', label: 'Cardio', icon: '🏃‍♂️' }
+        ];
+
+        let selectedMuscles = [];
+        let currentFeeling = '';
+
+        document.getElementById('training-date').valueAsDate = new Date();
+
+        const muscleContainer = document.getElementById('muscle-groups');
+        muscles.forEach(m => {
+            const btn = document.createElement('button');
+            btn.className = "flex items-center justify-between border border-neon p-2.5 rounded-lg hover:bg-gray-800/50 transition text-xs";
+            btn.id = `muscle-${m.id}`;
+            btn.type = "button";
+            btn.onclick = () => toggleMuscle(m.id, m.label);
+            btn.innerHTML = `<span>${m.icon} ${m.label}</span><i class="fa-regular fa-circle-check opacity-20 check-icon"></i>`;
+            muscleContainer.appendChild(btn);
+        });
+
+        function toggleMuscle(id, label) {
+            const btn = document.getElementById(`muscle-${id}`);
+            const check = btn.querySelector('.check-icon');
+            if(selectedMuscles.includes(label)) {
+                selectedMuscles = selectedMuscles.filter(item => item !== label);
+                btn.classList.remove('selected-group');
+                check.className = "fa-regular fa-circle-check opacity-20 check-icon";
+            } else {
+                selectedMuscles.push(label);
+                btn.classList.add('selected-group');
+                check.className = "fa-solid fa-circle-check text-pink-500 check-icon";
+            }
+            updateMuscleBadge();
+        }
+
+        function updateMuscleBadge() {
+            const container = document.getElementById('selected-badge-container');
+            const text = document.getElementById('selected-badge-text');
+            if(selectedMuscles.length > 0) {
+                container.classList.replace('hidden', 'flex');
+                text.innerText = `🟣 Selecionados: ${selectedMuscles.join(', ')}`;
+            } else {
+                container.classList.replace('flex', 'hidden');
+            }
+        }
+
+        function clearSelectedMuscles() {
+            selectedMuscles = [];
+            muscles.forEach(m => {
+                document.getElementById(`muscle-${m.id}`).classList.remove('selected-group');
+                document.getElementById(`muscle-${m.id}`).querySelector('.check-icon').className = "fa-regular fa-circle-check opacity-20 check-icon";
+            });
+            updateMuscleBadge();
+        }
+
+        function setFeeling(feeling) {
+            ['Fraco', 'Ok', 'Bom', 'Ótimo'].forEach(f => document.getElementById(`feel-${f}`).classList.remove('selected-feeling'));
+            currentFeeling = feeling;
+            document.getElementById(`feel-${feeling}`).classList.add('selected-feeling');
+        }
+        setFeeling('Bom');
+
+        function addExerciseRow(name = '', sets = 4, reps = '12, 12, 10, 8', weight = '30, 35, 35, 40') {
+            const tbody = document.getElementById('exercise-rows');
+            const tr = document.createElement('tr');
+            tr.className = "border-b border-neon/50 text-sm";
+            tr.innerHTML = `
+                <td class="py-3 pr-2"><input type="text" value="${name}" placeholder="Ex: Supino" class="w-full bg-[#161a30] border border-neon rounded px-2 py-1.5 text-sm focus:outline-none"></td>
+                <td class="py-3 text-center">
+                    <div class="flex items-center justify-center gap-1">
+                        <button onclick="changeSet(this, -1)" class="w-6 h-6 bg-gray-800 rounded border border-neon text-xs">-</button>
+                        <span class="set-count font-bold w-6">${sets}</span>
+                        <button onclick="changeSet(this, 1)" class="w-6 h-6 bg-gray-800 rounded border border-neon text-xs">+</button>
+                    </div>
+                </td>
+                <td class="py-3 px-2"><input type="text" value="${reps}" class="w-full bg-[#161a30] border border-neon rounded px-2 py-1.5 text-center text-xs"></td>
+                <td class="py-3 px-2"><input type="text" value="${weight}" class="w-full bg-[#161a30] border border-neon rounded px-2 py-1.5 text-center text-xs"></td>
+                <td class="py-3 text-center"><button onclick="this.closest('tr').remove()" class="text-red-400 hover:text-red-500"><i class="fa-regular fa-trash-can"></i></button></td>
+            `;
+            tbody.appendChild(tr);
+        }
+
+        function changeSet(btn, val) {
+            const span = btn.parentElement.querySelector('.set-count');
+            span.innerText = Math.max(1, parseInt(span.innerText) + val);
+        }
+
+        // Linhas iniciais padrão
+        addExerciseRow('Supino reto', 4, '12, 12, 10, 8', '30, 35, 35, 40');
+        addExerciseRow('Agachamento livre', 4, '10, 10, 8, 8', '40, 45, 50, 55');
+        addExerciseRow('Elevação pélvica', 4, '15, 12, 12, 10', '20, 22.5, 25, 27.5');
+
+        function clearAll() {
+            if(confirm("Zerar campos?")) {
+                clearSelectedMuscles(); document.getElementById('exercise-rows').innerHTML = '';
+                document.getElementById('observations').value = ''; document.getElementById('duration').value = 60; setFeeling('Bom');
+            }
+        }
+
+        function saveWorkout() {
+            const rows = document.querySelectorAll('#exercise-rows tr');
+            let exercisesList = [];
+            rows.forEach(row => {
+                const inputs = row.querySelectorAll('input');
+                if (inputs[0]?.value.trim()) {
+                    exercisesList.push({ name: inputs[0].value.trim(), sets: row.querySelector('.set-count').innerText, reps: inputs[1].value, weight: inputs[2].value });
+                }
+            });
+
+            const workoutData = {
+                data: document.getElementById('training-date').value,
+                gruposMusculares: selectedMuscles,
+                duracaoMinutos: document.getElementById('duration').value,
+                feeling: currentFeeling,
+                exercicios: exercisesList,
+                observacoes: document.getElementById('observations').value
+            };
+
+            localStorage.setItem('ultimoTreino', JSON.stringify(workoutData));
+            document.getElementById('history-box').classList.remove('hidden');
+            document.getElementById('history-data').innerText = JSON.stringify(workoutData, null, 2);
+            
+            alert('Treino registrado com sucesso! O código com as informações foi gerado no final da página. 🦾');
+            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+        }
+
+        // Gráfico de Linha Roxo
         const ctx = document.getElementById('volumeChart').getContext('2d');
-        
-        // Gradiente roxo suave sob a linha, igual ao efeito da imagem
         const gradient = ctx.createLinearGradient(0, 0, 0, 200);
         gradient.addColorStop(0, 'rgba(168, 85, 247, 0.25)');
         gradient.addColorStop(1, 'rgba(168, 85, 247, 0.0)');
@@ -267,32 +281,14 @@
             data: {
                 labels: ['Seg 18/05', 'Ter 19/05', 'Qua 20/05', 'Qui 21/05', 'Sex 22/05', 'Sáb 23/05', 'Dom 24/05'],
                 datasets: [{
-                    label: 'Volume (kg)',
-                    data: [1230, 1520, null, 1780, null, 1790, null], // Null deixa o dia sem treino quebrado/vazio
-                    borderColor: '#a855f7',
-                    borderWidth: 3,
-                    backgroundColor: gradient,
-                    fill: true,
-                    tension: 0.3, // Curvatura suave da linha
-                    pointBackgroundColor: '#ffffff',
-                    pointBorderColor: '#a855f7',
-                    pointBorderWidth: 3,
-                    pointRadius: 5,
-                    pointHoverRadius: 7,
-                    spanGaps: true // Conecta os pontos mesmo com dias vazios
+                    data: [1230, 1520, null, 1780, null, 1790, null],
+                    borderColor: '#a855f7', borderWidth: 3, backgroundColor: gradient, fill: true, tension: 0.3,
+                    pointBackgroundColor: '#ffffff', pointBorderColor: '#a855f7', pointBorderWidth: 3, pointRadius: 5, spanGaps: true
                 }]
             },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: { legend: { display: false } },
-                scales: {
-                    x: { grid: { display: false }, ticks: { color: '#6b7280', font: { size: 10 } } },
-                    y: { 
-                        min: 0, max: 2000,
-                        grid: { color: 'rgba(42, 47, 76, 0.3)' },
-                        ticks: { stepSize: 500, color: '#6b7280', font: { size: 10 } }
-                    }
+            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } },
+                scales: { x: { grid: { display: false }, ticks: { color: '#6b7280', font: { size: 10 } } },
+                    y: { min: 0, max: 2000, grid: { color: 'rgba(42, 47, 76, 0.2)' }, ticks: { stepSize: 500, color: '#6b7280', font: { size: 10 } } }
                 }
             }
         });
